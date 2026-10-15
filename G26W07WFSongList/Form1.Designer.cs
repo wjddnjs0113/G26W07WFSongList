@@ -23,12 +23,30 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            components = new System.ComponentModel.Container();
+            listSong = new ListBox();
+            SuspendLayout();
+            // 
+            // listSong
+            // 
+            listSong.FormattingEnabled = true;
+            listSong.Location = new Point(12, 12);
+            listSong.Name = "listSong";
+            listSong.Size = new Size(776, 424);
+            listSong.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Text = "Form1";
+            Controls.Add(listSong);
+            Name = "Form1";
+            Text = "애창곡";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private ListBox listSong;
     }
 }
