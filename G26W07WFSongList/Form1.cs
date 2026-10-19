@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace G26W07WFSongList {
 
@@ -122,6 +123,19 @@ namespace G26W07WFSongList {
 
             txtSelected.Text = song.ToString();
             btnDelete.Enabled = true;
+        }
+
+        private void OnYouTube(object sender, EventArgs e) {
+            // 혹시 빈 공간 더블클릭할까봐 검사
+            if (listSong.SelectedItem is not Song song)
+                return;
+
+            string query = Uri.EscapeDataString($"노래방 {song.Title} {song.Artist}");
+
+            Process.Start(new ProcessStartInfo(
+                $"https://www.youtube.com/results?search_query={query}") {
+                UseShellExecute = true
+            });
         }
     }
 
