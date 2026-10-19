@@ -90,8 +90,41 @@ namespace G26W07WFSongList {
             txtRating.Clear();
             txtTitle.Focus();
         }
+
+        private void OnDelete(object sender, EventArgs e) {
+            if (listSong.SelectedItem is not Song song)
+                return;
+
+            var result = MessageBox.Show(
+                $"{song.ToString()}\n\n노래를 삭제할까요?",
+                "삭제 확인",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes)
+                return;
+
+            _db.Songs.Remove(song);
+            _db.SaveChanges();
+
+            LoadSongs();
+
+            txtSelected.Clear();
+            btnDelete.Enabled = false;
+        }
+
+        private void OnChanged(object sender, EventArgs e) {
+            if (listSong.SelectedItem is not Song song) {
+                txtSelected.Clear();
+                btnDelete.Enabled = false;
+                return;
+            }
+
+            txtSelected.Text = song.ToString();
+            btnDelete.Enabled = true;
+        }
     }
-    
+
 
 
     public record Song(string Title, string Artist, int Rating) {
