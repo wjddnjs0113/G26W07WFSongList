@@ -54,7 +54,7 @@ namespace G26W07WFSongList {
         private void LoadSongs() {
             listSong.Items.Clear();
 
-            string keyword = txtFilter.Text.Trim();
+            string keyword = txtFilter.Text.Trim().ToLower();
 
             var songs = _db.Songs
                 .Where(s => s.Title.ToLower().Contains(keyword) ||
