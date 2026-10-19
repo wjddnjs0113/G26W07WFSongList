@@ -2,27 +2,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace G26W07WFSongList {
 
-    public record Song(string Title, string Artist, int Rating) {
-        public int Id { get; init; }
-
-        public override string ToString() => $"{Title} - [{Artist}] (⭐{Rating})";
-    }
-
-    public class AppDbContext : DbContext {
-        public DbSet<Song> Songs { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            // songs.db 파일로 저장
-            optionsBuilder.UseSqlite("Data Source=songs.db");
-        }
-    }
-
-
     public partial class Form1 : Form {
         //private List<Song> _songs = [];
         private AppDbContext _db = new AppDbContext();
 
-        public Form1() {
+        public Form1() { 
             InitializeComponent();
 
             _db.Database.EnsureCreated();
@@ -63,6 +47,21 @@ namespace G26W07WFSongList {
             foreach (var song in filteredSongs) {
                 listSong.Items.Add(song);
             }
+        }
+    }
+
+    public record Song(string Title, string Artist, int Rating) {
+        public int Id { get; init; }
+
+        public override string ToString() => $"{Title} - [{Artist}] (⭐{Rating})";
+    }
+
+    public class AppDbContext : DbContext {
+        public DbSet<Song> Songs { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+            // songs.db 파일로 저장
+            optionsBuilder.UseSqlite("Data Source=songs.db");
         }
     }
 }
