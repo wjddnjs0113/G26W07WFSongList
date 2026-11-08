@@ -1,4 +1,7 @@
-﻿namespace G26W07WFSongList {
+﻿using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace G26W07WFSongList {
     partial class Form1 {
         /// <summary>
         ///  Required designer variable.
@@ -23,31 +26,31 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            listSong = new ListBox();
+            listMovie = new ListBox();
             txtTitle = new TextBox();
             txtRating = new TextBox();
-            txtArtist = new TextBox();
+            txtDirector = new TextBox();
             btnAdd = new Button();
             txtSelected = new TextBox();
             btnDelete = new Button();
             txtFilter = new TextBox();
             SuspendLayout();
             // 
-            // listSong
+            // listMovie
             // 
-            listSong.FormattingEnabled = true;
-            listSong.Location = new Point(11, 45);
-            listSong.Name = "listSong";
-            listSong.Size = new Size(776, 424);
-            listSong.TabIndex = 0;
-            listSong.SelectedIndexChanged += OnChanged;
-            listSong.DoubleClick += OnYouTube;
+            listMovie.FormattingEnabled = true;
+            listMovie.Location = new Point(11, 45);
+            listMovie.Name = "listMovie";
+            listMovie.Size = new Size(776, 424);
+            listMovie.TabIndex = 0;
+            listMovie.SelectedIndexChanged += OnChanged;
+            listMovie.DoubleClick += OnYouTube;
             // 
             // txtTitle
             // 
             txtTitle.Location = new Point(11, 475);
             txtTitle.Name = "txtTitle";
-            txtTitle.PlaceholderText = "제목";
+            txtTitle.PlaceholderText = "영화 제목";
             txtTitle.Size = new Size(339, 27);
             txtTitle.TabIndex = 1;
             // 
@@ -60,13 +63,13 @@
             txtRating.Size = new Size(96, 27);
             txtRating.TabIndex = 3;
             // 
-            // txtArtist
+            // txtDirector
             // 
-            txtArtist.Location = new Point(356, 475);
-            txtArtist.Name = "txtArtist";
-            txtArtist.PlaceholderText = "가수";
-            txtArtist.Size = new Size(228, 27);
-            txtArtist.TabIndex = 2;
+            txtDirector.Location = new Point(356, 475);
+            txtDirector.Name = "txtDirector";
+            txtDirector.PlaceholderText = "감독";
+            txtDirector.Size = new Size(228, 27);
+            txtDirector.TabIndex = 2;
             // 
             // btnAdd
             // 
@@ -83,7 +86,7 @@
             txtSelected.Enabled = false;
             txtSelected.Location = new Point(11, 508);
             txtSelected.Name = "txtSelected";
-            txtSelected.PlaceholderText = "삭제를 위해 선택된 노래";
+            txtSelected.PlaceholderText = "삭제를 위해 선택된 영화";
             txtSelected.ReadOnly = true;
             txtSelected.Size = new Size(675, 27);
             txtSelected.TabIndex = 5;
@@ -104,7 +107,7 @@
             // 
             txtFilter.Location = new Point(12, 12);
             txtFilter.Name = "txtFilter";
-            txtFilter.PlaceholderText = "제목 또는 가수 검색";
+            txtFilter.PlaceholderText = "제목 또는 감독 검색";
             txtFilter.Size = new Size(775, 27);
             txtFilter.TabIndex = 7;
             txtFilter.TextChanged += OnFilterChanged;
@@ -118,22 +121,22 @@
             Controls.Add(btnDelete);
             Controls.Add(txtSelected);
             Controls.Add(btnAdd);
-            Controls.Add(txtArtist);
+            Controls.Add(txtDirector);
             Controls.Add(txtRating);
             Controls.Add(txtTitle);
-            Controls.Add(listSong);
+            Controls.Add(listMovie);
             Name = "Form1";
-            Text = "애창곡";
+            Text = "영화 목록 관리자";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ListBox listSong;
+        private ListBox listMovie;
         private TextBox txtTitle;
         private TextBox txtRating;
-        private TextBox txtArtist;
+        private TextBox txtDirector;
         private Button btnAdd;
         private TextBox txtSelected;
         private Button btnDelete;
